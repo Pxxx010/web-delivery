@@ -10,8 +10,6 @@ const addressInput = document.getElementById("address");
 const addressWarn = document.getElementById("address-warn");
 const customerNameInput = document.getElementById("customer-name");
 const customerPhoneInput = document.getElementById("customer-phone");
-const nameWarn = document.getElementById("name-warn");
-const phoneWarn = document.getElementById("phone-warn");
 
 let cart = [];
 
@@ -144,24 +142,6 @@ checkoutBtn.addEventListener("click", function () {
     if (cart.length === 0) return;
 
     // Verificação de validação dos campos
-    if (customerNameInput.value === "") {
-        nameWarn.classList.remove("hidden");
-        customerNameInput.classList.add("border-red-500");
-        return;
-    } else {
-        nameWarn.classList.add("hidden");
-        customerNameInput.classList.remove("border-red-500");
-    }
-
-    if (customerPhoneInput.value === "") {
-        phoneWarn.classList.remove("hidden");
-        customerPhoneInput.classList.add("border-red-500");
-        return;
-    } else {
-        phoneWarn.classList.add("hidden");
-        customerPhoneInput.classList.remove("border-red-500");
-    }
-
     if (addressInput.value === "") {
         addressWarn.classList.remove("hidden");
         addressInput.classList.add("border-red-500");

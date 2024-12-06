@@ -2768,3 +2768,14 @@ body{
     }
   }
 }
+
+#customer-modal {
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo preto com 60% de opacidade */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
