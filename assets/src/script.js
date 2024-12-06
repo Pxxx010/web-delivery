@@ -117,7 +117,7 @@ addressInput.addEventListener("input", function (event) {
 
     if (inputValue !== "") {
         addressInput.classList.remove("border-red-500");
-        addressWarn.classList.add("hidden");
+        addressWarn.classList.add("ocultar");
     }
 });
 
@@ -143,11 +143,11 @@ checkoutBtn.addEventListener("click", function () {
 
     // Verificação de validação dos campos
     if (addressInput.value === "") {
-        addressWarn.classList.remove("hidden");
+        addressWarn.classList.remove("ocultar");
         addressInput.classList.add("border-red-500");
         return;
     } else {
-        addressWarn.classList.add("hidden");
+        addressWarn.classList.add("ocultar");
         addressInput.classList.remove("border-red-500");
     }
 
