@@ -38,9 +38,14 @@
     </header>
     <!--Fim Header-->
 
-    <h2 class="text-2x1 md:text-3x1 font-bold text-center mt-9 mb-6">
+    <h2 class="text-2xl md:text-3x1 font-bold text-center mt-9 mb-6">
         Conheça nosso menu
     </h2>
+
+    <h3 class="text-2lg md:text-3xl font-bold text-center mt-9 mb-6">
+        Hambúrgueres Deliciosos
+    </h3>
+    
     <!---Inicio menu-->
     <div id="menu" class="max-w-7xl mx-auto px-2">
         <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mb-16">
@@ -165,9 +170,9 @@
             <!--Fim produto item-->
         </main>
 
-        <div class="my-2">
-            <h2 class="font-bold text-3x1">Bebidas</h2>
-        </div>
+        <h3 class="text-2lg md:text-3xl font-bold text-center mt-9 mb-6">
+            Bebidas
+        </h3>
 
         <!--Grid bebidas-->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mb-16">
@@ -229,13 +234,14 @@
 <!-- Modal Numero e Telefone -->
 <div class="hidden" id="customer-modal">
     <div class="bg-white p-5 rounded-lg w-[400px] h-[350px] shadow-lg flex flex-col justify-between">
-        <h2 class="text-center font-bold text-xl mb-4">Informações do Cliente</h2>
+        <h2 class="text-center font-bold text-xl mb-4">Cadastre-se no nosso Delivery!</h2>
+
         <p class="text-center mb-6 text-gray-600">Por favor, preencha suas informações antes de continuar.</p>
 
         <form id="customer-form" class="space-y-4">
             <div>
                 <label for="customer-name" class="block font-medium text-sm">Seu Nome</label>
-                <input type="text" id="customer-name" placeholder="Digite seu nome completo" class="w-full border border-gray-300 p-2 rounded-md focus:ring focus:ring-green-500 focus:outline-none" required />
+                <input type="text" id="customer-name" placeholder="Digite seu nome completo" class="w-full border border-gray-500 p-2 rounded-md focus:ring focus:ring-green-500 focus:outline-none" required />
             </div>
             <div>
                 <label for="customer-phone" class="block font-medium text-sm">Seu Telefone</label>
