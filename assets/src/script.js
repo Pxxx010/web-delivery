@@ -6,10 +6,9 @@ const cartTotal = document.getElementById("cart-total");
 const checkoutBtn = document.getElementById("checkout-btn");
 const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
-const addressInput = document.getElementById("address");
-const addressWarn = document.getElementById("address-warn");
 const customerNameInput = document.getElementById("customer-name");
 const customerPhoneInput = document.getElementById("customer-phone");
+const paymentInputs = document.querySelectorAll("input[name='payment-method']");
 
 let cart = [];
 
@@ -42,7 +41,6 @@ menu.addEventListener("click", function (event) {
 function addToCart(name, price) {
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
-        // Se o item existe, adiciona mais 1 a quantidade
         existingItem.quantity += 1;
     } else {
         cart.push({
@@ -111,81 +109,50 @@ function removeItemCart(name) {
     }
 }
 
-// Validação de campo de endereço
-addressInput.addEventListener("input", function (event) {
-    let inputValue = event.target.value;
-
-    if (inputValue !== "") {
-        addressInput.classList.remove("border-red-500");
-        addressWarn.classList.add("ocultar");
-    }
-});
-
 // Finalizar pedido
 checkoutBtn.addEventListener("click", function () {
     const isOpen = checkRestaurantOpen();
     if (!isOpen) {
-        Toastify({
-            text: "Ops, o restaurante está fechado :(",
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-                background: "#ef44444",
-            },
-        }).showToast();
+        alert("O restaurante está fechado no momento.");
         return;
     }
 
     if (cart.length === 0) return;
 
-    // Verificação de validação dos campos
-    if (addressInput.value === "") {
-        addressWarn.classList.remove("ocultar");
-        addressInput.classList.add("border-red-500");
+    // Verificar se uma forma de pagamento foi selecionada
+    const paymentMethod = Array.from(paymentInputs).find(input => input.checked)?.value;
+    if (!paymentMethod) {
+        alert("Por favor, selecione uma forma de pagamento.");
         return;
-    } else {
-        addressWarn.classList.add("ocultar");
-        addressInput.classList.remove("border-red-500");
     }
 
     // Montando os dados do pedido
     const cartItems = cart.map((item) => {
-        return `${item.name} Quantidade: (${item.quantity}) Preço: R$ ${item.price.toFixed(2)} |`;
-    }).join("\n");
+        return `${item.name} (${item.quantity}x)`;
+    }).join(", ");
 
     const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
     const customerName = customerNameInput.value;
     const customerPhone = customerPhoneInput.value;
-    const customerAddress = addressInput.value;
-    const locationLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(customerAddress)}`;
 
+    // Adicionar data e hora
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString();
+    const formattedTime = now.toLocaleTimeString();
+
+    // Criar mensagem
     const message = encodeURIComponent(`
-    BR-9120642885
-    🗓️ ${new Date().toLocaleDateString()} ⏰ ${new Date().toLocaleTimeString()}
+📅 Data: ${formattedDate} ⏰ Hora: ${formattedTime}
 
-    Tipo de serviço: Delivery
+Pedido para Delivery
+Nome: ${customerName}
+Telefone: ${customerPhone}
 
-    Nome: ${customerName}
-    Telefone: ${customerPhone}
-    Endereço: ${customerAddress} (${locationLink})
+Produtos: ${cartItems}
+Total: R$ ${totalPrice}
+Forma de pagamento: ${paymentMethod}
 
-    📝 Produtos
-    ${cartItems}
-
-    Subtotal: R$ ${totalPrice}
-    Delivery: A definir
-    Total: R$ ${totalPrice}
-
-    💲 Pagamento
-    Estado do pagamento: Não pago
-    Total a pagar: R$ ${totalPrice}
-    PIX ${totalPrice}
-    Solicitar a chave pelo whatsapp
-
-    👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.
+👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.
     `);
 
     const phone = "+5581983191149"; // Número do WhatsApp
@@ -201,7 +168,7 @@ checkoutBtn.addEventListener("click", function () {
 function checkRestaurantOpen() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 || hora < 23; // O restaurante está aberto das 18h até as 4h
+    return hora >= 15 && hora < 23; // O restaurante está aberto das 15h até as 23h
 }
 
 const spanItem = document.getElementById("date-span");
@@ -214,5 +181,3 @@ if (isOpen) {
     spanItem.classList.remove("bg-green-600");
     spanItem.classList.add("bg-red-500");
 }
-
-

@@ -218,11 +218,22 @@
         <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
         <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
         <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
-        <p class="font-bold mt-4">Endereço de entrega</p>
 
-        <input type="text" placeholder="Digite seu endereço completo" id="address" class="w-full border-2 p-1 rounded my-1" />
-        
-        <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+        <p class="font-bold text-lg mt-4">Forma de pagamento</p>
+        <div class="my-4 flex gap-[7px] space-x-2">
+            <label class="flex items-center">
+                <input type="radio" name="payment-method" value="pix" class="mr-2"> PIX
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="payment-method" value="avista" class="mr-2"> À Vista
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="payment-method" value="credito" class="mr-2"> Crédito
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="payment-method" value="debito" class="mr-2"> Débito
+            </label>
+        </div>
 
         <div class="flex items-center justify-between mt-5 w-full">
             <button id="close-modal-btn">Fechar</button>
@@ -230,6 +241,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Modal Numero e Telefone -->
 <div class="hidden" id="customer-modal">
