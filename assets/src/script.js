@@ -141,24 +141,25 @@ checkoutBtn.addEventListener("click", function () {
     const formattedTime = now.toLocaleTimeString();
 
     // Criar mensagem
-    const message = `
-    =========================
-    📅 Data: ${formattedDate} 
-    ⏰ Hora: ${formattedTime}
+    const message = encodeURIComponent(`
+=========================
+📅 Data: ${formattedDate} 
+⏰ Hora: ${formattedTime}
 
-    *Pedido para Delivery*
-    Nome: ${customerName}
-    Telefone: ${customerPhone}
+*Pedido para Delivery*
+Nome: ${customerName}
+Telefone: ${customerPhone}
 
-    *Produtos*: 
-    ${cartItems}
+*Produtos*: 
+${cartItems}
 
-    💠 *Pagamento*:
-    Forma de pagamento: ${paymentMethod}
-    Total: R$ ${totalPrice}
-    =========================
+💠 *Pagamento*:
+Forma de pagamento: ${paymentMethod}
+Total: R$ ${totalPrice}
+=========================
 
-    👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.`;
+👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.
+    `);
 
     const phone = "+5581983191149"; // Número do WhatsApp
 
@@ -167,7 +168,7 @@ checkoutBtn.addEventListener("click", function () {
     // Limpar carrinho após envio
     cart = [];
     updateCartModal();
-    });
+});
 
 // Função para verificar se o restaurante está aberto
 function checkRestaurantOpen() {
