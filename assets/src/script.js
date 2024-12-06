@@ -137,8 +137,8 @@ checkoutBtn.addEventListener("click", function () {
 
     // Adicionar data e hora
     const now = new Date();
-    const formattedDate = now.toLocaleDateString();
-    const formattedTime = now.toLocaleTimeString();
+    const formattedDate = now.toLocaleDateString("pt-BR");
+    const formattedTime = now.toLocaleTimeString("pt-BR");
 
     // Criar mensagem
     const message = `
@@ -159,10 +159,11 @@ Total: R$ ${totalPrice}
 =========================
 
 👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.
-    `;
+`;
 
     const phone = "+5581983191149"; // Número do WhatsApp
 
+    // Enviar a mensagem para o WhatsApp
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 
     // Limpar carrinho após envio
