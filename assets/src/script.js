@@ -137,39 +137,37 @@ checkoutBtn.addEventListener("click", function () {
 
     // Adicionar data e hora
     const now = new Date();
-    const formattedDate = now.toLocaleDateString("pt-BR");
-    const formattedTime = now.toLocaleTimeString("pt-BR");
+    const formattedDate = now.toLocaleDateString();
+    const formattedTime = now.toLocaleTimeString();
 
     // Criar mensagem
     const message = `
-=========================
-📅 Data: ${formattedDate} 
-⏰ Hora: ${formattedTime}
+    =========================
+    📅 Data: ${formattedDate} 
+    ⏰ Hora: ${formattedTime}
 
-*Pedido para Delivery*
-Nome: ${customerName}
-Telefone: ${customerPhone}
+    *Pedido para Delivery*
+    Nome: ${customerName}
+    Telefone: ${customerPhone}
 
-*Produtos*: 
-${cartItems}
+    *Produtos*: 
+    ${cartItems}
 
-💠 *Pagamento*:
-Forma de pagamento: ${paymentMethod}
-Total: R$ ${totalPrice}
-=========================
+    💠 *Pagamento*:
+    Forma de pagamento: ${paymentMethod}
+    Total: R$ ${totalPrice}
+    =========================
 
-👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.
-`;
+    👆 Por favor, envie-nos esta mensagem agora. Assim que recebermos estaremos atendendo você.`;
 
     const phone = "+5581983191149"; // Número do WhatsApp
 
-    // Enviar a mensagem para o WhatsApp
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 
     // Limpar carrinho após envio
     cart = [];
     updateCartModal();
-});
+    });
 
 // Função para verificar se o restaurante está aberto
 function checkRestaurantOpen() {
