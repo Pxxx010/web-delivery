@@ -146,13 +146,14 @@ checkoutBtn.addEventListener("click", function () {
 📅 Data: ${formattedDate} 
 ⏰ Hora: ${formattedTime}
 
-Pedido para Delivery
+*Pedido para Delivery*
 Nome: ${customerName}
 Telefone: ${customerPhone}
 
-Produtos: ${cartItems}
+*Produtos*: 
+${cartItems}
 
-💠 Pagamento:
+💠 *Pagamento*:
 Forma de pagamento: ${paymentMethod}
 Total: R$ ${totalPrice}
 =========================
